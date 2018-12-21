@@ -1,0 +1,6 @@
+
+/* function from https://www.w3schools.com/css/css_table.asp
+ * retrived november 19, 2018 */
+table, th, td {
+   border: 1px solid black;
+}

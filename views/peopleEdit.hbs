@@ -1,0 +1,73 @@
+<div id="page">
+    <header>
+        <nav>
+            <ul>
+                <li><a href={{homePage}}>Home</a></li>
+                <li><a href={{peoplePage}}>Add/Delete/Modify People</a></li>
+                <li><a href={{foodPage}}>Add/Delete Food</a></li>
+                <li><a href={{drinksPage}}>Add/Delete Drinks</a></li>
+                <li><a href={{likesPage}}>Add/Delete Likes</a></li>
+                <li><a href={{tricksPage}}>Add/Delete Party Trick</a></li>
+            </ul> 
+        </nav>
+    </header>
+    <div id="myForms">
+        <h2>Edit Person</h2>
+        <form id="submitForm" action="{{editSubmit}}" method="post">
+            <p>Name: 
+                <input id="name" type="text" name="person" value="{{Name}}">
+            </p>
+            <input id="originalName" type="hidden" name="originalPerson" value="{{Name}}">
+            <p>Sex: 
+                <select id="sex" name="sex">
+                    <option value="0" {{maleSelect}} > Male </option>
+                    <option value="1" {{femaleSelect}} > Female </option>
+                </select>
+            </p>
+            <p>Age: 
+                <input id="age" type="number" name="age" value={{Age}} >
+            </p>
+            <p>Favourite Food: 
+                <select id="food" name="food">
+                    <option></option>
+                    {{#each foodList}}
+                    <option value="{{FoodName}}" {{SelectedFood}} > {{FoodName}} </option>
+                    {{/each}}
+                </select>
+            </p>
+            <p>Favourite Drink: 
+                <select id="drink" name="drink">
+                    <option></option>
+                    {{#each drinkList}}
+                    <option value="{{DrinkName}}" {{SelectedDrink}} > {{DrinkName}} </option>
+                    {{/each}}
+                </select>
+            </p>
+            <p>Some Things The Person Likes: <br>
+                <!- the line below will be deleted in the end ->
+                {{#each likeList}}
+                <input class="like" type="checkbox" name="like" value="{{LikeDesc}}" {{SelectedLike}} /> {{LikeDesc}}
+                <br>
+                {{/each}}
+            </p>
+            <p>Party Tricks The Person Can Do: <br>
+                <!- the line below will be deleted in the end ->
+                {{#each trickList}}
+                <input class="trick" type="checkbox" name="trick" value="{{TrickDesc}}" {{SelectedTrick}} /> {{TrickDesc}}
+                <br />
+                {{/each}}
+            </p>
+            <p>Does Who Does This Person Have A Crush On?: 
+                <select id="crush" name="person">
+                    <option></option>
+                    {{#each personList}}
+                    <option value="{{PersonName}}" {{SelectedCrush}} > {{PersonName}} </option>
+                    {{/each}}
+                </select>
+            </p>
+            <input id="editSubmit" type="submit" value="submit" />
+        </form>
+        <p id="editError"></p>
+    </div>
+</div>
+<script src="editPersonStatic.js"></script>

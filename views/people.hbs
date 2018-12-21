@@ -1,0 +1,114 @@
+<div id="page">
+    <header>
+        <nav>
+            <ul>
+                <li><a href={{homePage}}>Home</a></li>
+                <li><a href={{peoplePage}}>Add/Delete/Modify People</a></li>
+                <li><a href={{foodPage}}>Add/Delete Food</a></li>
+                <li><a href={{drinksPage}}>Add/Delete Drinks</a></li>
+                <li><a href={{likesPage}}>Add/Delete Likes</a></li>
+                <li><a href={{tricksPage}}>Add/Delete Party Trick</a></li>
+            </ul> 
+        </nav>
+    </header>
+    <div id="myForms">
+        <h2>People: Add, Delete, or Modify</h2>
+        <h3>Add Person</h3>
+        <form id="addForm" action={{newPerson}} method="post">
+            <p>Name: 
+                <input id="name" type="text" name="person" />
+            </p>
+            <p>Sex: 
+                <select id="sex" name="sex">
+                    <option value="0"> Male </option>
+                    <option value="1"> Female </option>
+                </select>
+            </p>
+            <p>Age: 
+                <input id="age" type="number" name="age" />
+            </p>
+            <p>Favourite Food: 
+                <select id="food" name="food">
+                    {{#each foodList}}
+                    <option value="{{FoodName}}"> {{FoodName}} </option>
+                    {{/each}}
+                </select>
+            </p>
+            <p>Favourite Drink: 
+                <select id="drink" name="drink">
+                    {{#each drinkList}}
+                    <option value="{{DrinkName}}"> {{DrinkName}} </option>
+                    {{/each}}
+                </select>
+            </p>
+            <p>Some Things The Person Likes: <br> 
+                {{#each likeList}}
+                <input class="like" type="checkbox" name="like" value="{{LikeDesc}}" /> {{LikeDesc}}
+                <br />
+                {{/each}}
+            </p>
+            <p>Party Tricks The Person Can Do: <br>
+                {{#each trickList}}
+                <input class="trick" type ="checkbox" name="trick" value="{{TrickDesc}}" /> {{TrickDesc}}
+                <br />
+                {{/each}}
+            </p>
+            <p> Who Does This Person Have A Crush On?: 
+                <select id="crush" name="person">
+                    {{#each personList}}
+                    <option value="{{Name}}"> {{Name}} </option>
+                    {{/each}}
+                </select>
+            </p>
+            <input id="addSubmit" type="submit" value="submit" />
+        </form>
+        <p id="addError"></p>
+        <h3>Delete Person</h3>
+        <form id="deleteForm" action={{deletePerson}} method="post">
+            <p> Select Person: 
+                <select id="deleteList" name="person">
+                    {{#each personList}}
+                    <option value="{{Name}}"> {{Name}} </option>
+                    {{/each}}
+                </select>
+                <input id="deleteSubmit" type="submit" value="submit" />
+            </p>
+        </form>
+        <h3>Update Person</h3>
+        <form action={{peopleEdit}} method="get">
+            <p>Name: 
+                <select name="person">
+                    {{#each personList}}
+                    <option value="{{Name}}"> {{Name}} </option>
+                    {{/each}}
+                </select>
+                <input id="updateSubmit" type="submit" value="submit" />
+            </p>
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Favourite Food</th>
+                <th>Favourite Drink</th>
+                <th>Crush</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each personList}}
+            <tr>
+                <td>{{Name}}</th>
+                <td>{{Age}}</td>
+                <td>{{IsFemale}}</td>
+                <td>{{FoodName}}</td>              
+                <td>{{DrinkName}}</td>
+                <td>{{AttractedTo}}</td>
+     	    </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<script src="personStatic.js"></script>

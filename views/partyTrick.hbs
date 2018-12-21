@@ -1,0 +1,59 @@
+<div id="page">
+    <header>
+        <nav>
+            <ul>
+                <li><a href={{homePage}}>Home</a></li>
+                <li><a href={{peoplePage}}>Add/Delete/Modify People</a></li>
+                <li><a href={{foodPage}}>Add/Delete Food</a></li>
+                <li><a href={{drinksPage}}>Add/Delete Drinks</a></li>
+                <li><a href={{likesPage}}>Add/Delete Likes</a></li>
+                <li><a href={{tricksPage}}>Add/Delete Party Trick</a></li>
+            </ul> 
+        </nav>
+    </header>
+    <div id="myForms">
+        <h2>Party Trick: Add or Delete</h2>
+        <h3>Add Party Trick</h3>
+        <form id="addForm" action={{newTrick}} method="post">
+            <p>Name: 
+                <input id="trickDesc" type="text" name="trick" />
+            </p>
+            <p>Type: 
+                <select id="trickType" name="trickType">
+                    <option value="0"> Intellecutal </option>
+                    <option value="1"> Flashy </option>
+                </select>
+            </p>
+            <input id="addSubmit" type="submit" value="submit" />
+        </form>
+        <p id="addError"></p>        
+        <h3>Delete Trick</h3>
+        <form id="deleteForm" action={{deleteTrick}} method="post">
+            <p> Select Trick: 
+                <select id="deleteList" name="trick">
+                    {{#each trickList}}
+                    <option value="{{TrickDesc}}"> {{TrickDesc}} </option>
+                    {{/each}}
+                </select>
+                <input id="deleteSubmit" type="submit" value="submit" />
+            </p>
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Party Trick</th>
+                <th>Trick Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each trickList}}
+            <tr>
+                <td> {{TrickDesc}} </td>
+                <td> {{IsFlashy}} </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<script src="trickStatic.js"></script>

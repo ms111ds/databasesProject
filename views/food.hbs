@@ -1,0 +1,59 @@
+<div id="page">
+    <header>
+        <nav>
+            <ul>
+                <li><a href={{homePage}}>Home</a></li>
+                <li><a href={{peoplePage}}>Add/Delete/Modify People</a></li>
+                <li><a href={{foodPage}}>Add/Delete Food</a></li>
+                <li><a href={{drinksPage}}>Add/Delete Drinks</a></li>
+                <li><a href={{likesPage}}>Add/Delete Likes</a></li>
+                <li><a href={{tricksPage}}>Add/Delete Party Trick</a></li>
+            </ul> 
+        </nav>
+    </header>
+    <div id="myForms">
+        <h2>Food: Add or Delete</h2>
+        <h3>Add Food</h3>
+        <form id="addForm" action={{newFood}} method="post">
+            <p>Name: 
+                <input id="foodName" type="text" name="food" />
+            </p>
+            <p>Type: 
+                <select id="foodType" name="foodType">
+                    <option value="0"> Healthy </option>
+                    <option value="1"> Unhealthy </option>
+                </select>
+            </p>
+            <input id="addSubmit" type="submit" value="submit" />
+        </form>
+        <p id="addError"></p>
+        <h3>Delete Food</h3>
+        <form id="deleteForm" action={{deleteFood}} method="post">
+            <p> Select Food: 
+                <select id="deleteList" name="food">
+                    {{#each foodList}}
+                    <option value="{{FoodName}}"> {{FoodName}} </option>
+                    {{/each}}
+                </select>
+                <input id="deleteSubmit" type="submit" value="submit" />
+            </p>
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Food</th>
+                <th>Food Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each foodList}}
+            <tr>
+                <td> {{FoodName}} </td>
+                <td> {{IsUnhealthy}} </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<script src="foodStatic.js"></script>

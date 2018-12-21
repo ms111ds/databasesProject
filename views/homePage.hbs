@@ -1,0 +1,56 @@
+<div id="page">
+    <header>
+        <nav>
+            <ul>
+                <li><a href={{homePage}}>Home</a></li>
+                <li><a href={{peoplePage}}>Add/Delete/Modify People</a></li>
+                <li><a href={{foodPage}}>Add/Delete Food</a></li>
+                <li><a href={{drinksPage}}>Add/Delete Drinks</a></li>
+                <li><a href={{likesPage}}>Add/Delete Likes</a></li>
+                <li><a href={{tricksPage}}>Add/Delete Party Trick</a></li>
+            </ul> 
+        </nav>
+    </header>
+    <div id="myForms">
+        <h2>Spring Breakers Homepage</h2>
+        <h3>Select Spring Breaker</h3>
+        <form id=selectForm action={{selectPage}} method="post">
+            <p>Spring Breakers:</p>
+            <select id="name" name="person">
+                {{#each personList}}
+                <option value="{{Name}}">{{Name}}</option>
+                {{/each}}
+            </select>
+            <input id="selectSubmit" type="submit" value="submit" />
+        </form>
+        <p id="errorMsg"></p>
+    </div>
+        <h3>Spring Breaker Details</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>Favourite Food</th>
+                    <th>Favourite Drink</th>
+                    <th>Crush</th>
+                    <th>Likes</th>
+                    <th>Party Tricks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="selectName"></td>
+                    <td id="selectAge"></td>
+                    <td id="selectSex"></td>
+                    <td id="selectFood"></td>              
+                    <td id="selectDrinks"></td>
+                    <td id="selectCrush"></td>
+                    <td id="selectLikes"></td>
+                    <td id="selectTricks"></td>
+         	</tr>
+            </tbody>
+        </table>
+</div>
+<script src="homePageStatic.js"></script>

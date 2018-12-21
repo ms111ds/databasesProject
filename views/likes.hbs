@@ -1,0 +1,59 @@
+<div id="page">
+    <header>
+        <nav>
+            <ul>
+                <li><a href={{homePage}}>Home</a></li>
+                <li><a href={{peoplePage}}>Add/Delete/Modify People</a></li>
+                <li><a href={{foodPage}}>Add/Delete Food</a></li>
+                <li><a href={{drinksPage}}>Add/Delete Drinks</a></li>
+                <li><a href={{likesPage}}>Add/Delete Likes</a></li>
+                <li><a href={{tricksPage}}>Add/Delete Party Trick</a></li>
+            </ul> 
+        </nav>
+    </header>
+    <div id="myForms">
+        <h2>Likes: Add or Delete</h2>
+        <h3>Add Like</h3>
+        <form id="addForm" action={{newLike}} method="post">
+            <p>Name: 
+                <input id="likeDesc" type="text" name="like" />
+            </p>
+            <p>Type: 
+                <select id="likeType" name="likeType">
+                    <option value="0"> Cheap </option>
+                    <option value="1"> Expensive </option>
+                </select>
+            </p>
+            <input id="addSubmit" type="submit" value="submit" />
+        </form>
+        <p id="addError"></p>
+        <h3>Delete Like</h3>
+        <form id="deleteForm" action={{deleteLike}} method="post">
+            <p> Select Like: 
+                <select id="deleteList" name="like">
+                    {{#each likeList}}
+                    <option value="{{LikeDesc}}"> {{LikeDesc}} </option>
+                    {{/each}}
+                </select>
+                <input id="deleteSubmit" type="submit" value="submit" />
+            </p>
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Like</th>
+                <th>Like Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each likeList}}
+            <tr>
+                <td> {{LikeDesc}} </td>
+                <td> {{IsExpensive}} </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<script src="likeStatic.js"></script>

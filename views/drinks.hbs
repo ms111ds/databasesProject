@@ -1,0 +1,59 @@
+<div id="page">
+    <header>
+        <nav>
+            <ul>
+                <li><a href={{homePage}}>Home</a></li>
+                <li><a href={{peoplePage}}>Add/Delete/Modify People</a></li>
+                <li><a href={{foodPage}}>Add/Delete Food</a></li>
+                <li><a href={{drinksPage}}>Add/Delete Drinks</a></li>
+                <li><a href={{likesPage}}>Add/Delete Likes</a></li>
+                <li><a href={{tricksPage}}>Add/Delete Party Trick</a></li>
+            </ul> 
+        </nav>
+    </header>
+    <div id="myForms">
+        <h2>Drinks: Add or Delete</h2>
+        <h3>Add Drink</h3>
+        <form id="addForm" action={{newDrink}} method="post">
+            <p>Name: 
+                <input id="drinkName" type="text" name="drink" />
+            </p>
+            <p>Type: 
+                <select id="drinkType" name="drinkType">
+                    <option value="0"> NonAlcoholic </option>
+                    <option value="1"> Alcoholic </option>
+                </select>
+            </p>
+            <input id="addSubmit" type="submit" value="submit" />
+        </form>
+        <p id="addError"></p>
+        <h3>Delete Drink</h3>
+        <form id="deleteForm" action={{deleteDrink}} method="post">
+            <p> Select Drink: 
+                <select id="deleteList" name="drink">
+                    {{#each drinkList}}
+                    <option value="{{DrinkName}}"> {{DrinkName}} </option>
+                    {{/each}}
+                </select>
+            <input id="deleteSubmit" type="submit" value="submit" />
+            </p>
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Drink</th>
+                <th>Drink Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each drinkList}}
+            <tr>
+                <td> {{DrinkName}} </td>
+                <td> {{IsAlcoholic}} </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<script src="drinkStatic.js"></script>
